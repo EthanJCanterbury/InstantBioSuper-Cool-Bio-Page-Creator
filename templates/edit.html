@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Bio | Bio Creator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Edit Your Bio</h1>
+            <a href="{{ url_for('view_bio', bio_name=bio_name) }}" class="back-link">Back to Bio</a>
+        </header>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <main>
+            <form method="POST" enctype="multipart/form-data" class="bio-form">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required value="{{ bio.name }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tagline">Tagline</label>
+                    <input type="text" id="tagline" name="tagline" placeholder="Web Developer | Designer | Creator" value="{{ bio.tagline }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">Bio *</label>
+                    <textarea id="bio" name="bio" rows="5" required>{{ bio.bio }}</textarea>
+                    <small>Tell the world about yourself</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile_image">Profile Image</label>
+                    {% if bio.profile_image %}
+                        <div class="current-image">
+                            <img src="{{ url_for('static', filename=bio.profile_image) }}" alt="Current profile image" width="100">
+                            <p>Current image</p>
+                        </div>
+                    {% endif %}
+                    <input type="file" id="profile_image" name="profile_image" accept="image/*">
+                    <small>Upload a new image to replace the current one</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="theme">Theme</label>
+                    <select id="theme" name="theme">
+                        <option value="default" {% if bio.theme == 'default' %}selected{% endif %}>Default</option>
+                        <option value="dark" {% if bio.theme == 'dark' %}selected{% endif %}>Dark</option>
+                        <option value="light" {% if bio.theme == 'light' %}selected{% endif %}>Light</option>
+                        <option value="colorful" {% if bio.theme == 'colorful' %}selected{% endif %}>Colorful</option>
+                        <option value="minimal" {% if bio.theme == 'minimal' %}selected{% endif %}>Minimal</option>
+                    </select>
+                </div>
+                
+                <div class="social-links">
+                    <h3>Social Links</h3>
+                    
+                    <div class="form-group">
+                        <label for="twitter">Twitter</label>
+                        <input type="url" id="twitter" name="twitter" placeholder="https://twitter.com/yourusername" value="{{ bio.social_links.twitter }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourusername" value="{{ bio.social_links.instagram }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourusername" value="{{ bio.social_links.linkedin }}">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" name="github" placeholder="https://github.com/yourusername" value="{{ bio.social_links.github }}">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="custom_css">Custom CSS (Advanced)</label>
+                    <textarea id="custom_css" name="custom_css" rows="5">{{ bio.custom_css }}</textarea>
+                    <small>Add your own custom CSS styles</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="button primary">Update Bio</button>
+                </div>
+            </form>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Bio Creator. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

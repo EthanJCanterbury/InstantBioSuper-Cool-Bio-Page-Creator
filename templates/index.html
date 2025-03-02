@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUPER COOL Bio Creator!!!!!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Super Cool Bio Page Creator (SCBPC/InstantBio) i couldnt decide on a name tbh</h1>
+            <p class="tagline">Create and share your personal bio page with the world</p>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('create') }}">Create Bio</a></li>
+                    <li><a href="{{ url_for('api_docs') }}">API Docs</a></li>
+                    <li><a href="{{ url_for('web_docs') }}">Documentation</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main>
+            <div class="hero">
+                <h2>Express yourself with a *beautiful* bio page</h2>
+                <p>Create a customizable bio page in minutes and share it with the world.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('create') }}" class="button primary">Create Your Bio</a>
+                </div>
+            </div>
+
+            <section class="features">
+                <div class="feature">
+                    <h3>Customizable Themes</h3>
+                    <p>Choose from multiple themes or create your own with custom CSS.</p>
+                </div>
+                <div class="feature">
+                    <h3>Social Links</h3>
+                    <p>Connect your social media profiles in one place.</p>
+                </div>
+                <div class="feature">
+                    <h3>Easy Sharing</h3>
+                    <p>Share your bio with a simple, memorable URL.</p>
+                </div>
+                <div class="feature">
+                    <h3>API Access</h3>
+                    <p>Programmatically create and manage your bios with our RESTful API. (GIVE ME MY FREE RASPBERRY PI!!!!!!)</p>
+                </div>
+            </section>
+
+            <section class="how-it-works">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Create Your Bio</h3>
+                        <p>Fill out a simple form with your details and customize your theme. (very simple and nice styling fr. didnt take me 5 min. security def doesnt suck.)</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Personalize It! YAY!!!</h3>
+                        <p>Add your social links, profile picture, and even custom CSS styling. (crazy ngl)</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Share With The World</h3>
+                        <p>Get a unique URL that you can share anywhere!!!!!!!!!!1 online!!!!!111!!!!!!!11.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonials">
+                <h2>What Our (TOTALLY REAL) Users Say...</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <p>"I created my bio page in less than 5 minutes! So easy to use and looks amazing."</p>
+                        <div class="testimonial-author">- the person in your walls.</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The customization options are incredible. I was able to match it perfectly to my personal brand."</p>
+                        <div class="testimonial-author">-  Hack Club's live ferral racoon.</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"I love how I can update my bio anytime. It's become my go-to link in all my social profiles. yay"</p>
+                        <div class="testimonial-author">- some random dude in the sewer.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="api-section">
+                <h2>Developer API</h2>
+                <p>Building an application? Our comprehensive API lets you integrate Bio Creator functionality directly into your projects.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('api_docs') }}" class="button primary">View API Docs</a>
+                </div>
+            </section>
+
+            <section class="final-cta">
+                <h2>Ready to create your bio?</h2>
+                <p>Join those who already made super cool bios.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('create') }}" class="button primary">Get Started Now</a>
+                    <a href="{{ url_for('web_docs') }}" class="button secondary">Learn More</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bio Creator</h3>
+                    <p>Create beautiful bio pages in minutes.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('create') }}">Create Bio</a></li>
+                        <li><a href="{{ url_for('api_docs') }}">API Documentation</a></li>
+                        <li><a href="{{ url_for('web_docs') }}">User Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>ecanterbury@hacksomerset.org</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Hack Somerset Foundation. All rights reserved. Made with <3 for Hackclub RaspAPI by Ethan Canterbury</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

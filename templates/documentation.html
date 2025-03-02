@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Creator Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .docs-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .docs-nav {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .docs-nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .docs-nav li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .docs-nav li:last-child {
+            border-bottom: none;
+        }
+        
+        .docs-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .docs-nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .docs-content {
+            background-color: var(--card-background);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .docs-section {
+            margin-bottom: 40px;
+        }
+        
+        .docs-section h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .docs-section h3 {
+            color: var(--accent-color);
+            margin: 20px 0 10px;
+        }
+        
+        code {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">Bio Creator</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/create">Create Bio</a></li>
+                    <li><a href="/api/docs">API Docs</a></li>
+                    <li><a href="/docs" class="active">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="docs-container">
+        <h1>Bio Creator Documentation</h1>
+        
+        <div class="docs-grid">
+            <div class="docs-nav">
+                <h3>Contents</h3>
+                <ul>
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#creating-bio">Creating Your Bio</a></li>
+                    <li><a href="#editing-bio">Editing Your Bio</a></li>
+                    <li><a href="#customizing-themes">Customizing Themes</a></li>
+                    <li><a href="#custom-css">Using Custom CSS</a></li>
+                    <li><a href="#sharing">Sharing Your Bio</a></li>
+                    <li><a href="#api-usage">Using the API</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="docs-content">
+                <section id="getting-started" class="docs-section">
+                    <h2>Getting Started</h2>
+                    <p>Bio Creator allows you to create and share customizable bio pages with your own personalized URL. Whether you're a content creator, professional, or just someone who wants a simple way to share information about yourself, Bio Creator makes it easy.</p>
+                    
+                    <h3>What is a Bio Page?</h3>
+                    <p>A bio page is a single webpage that contains information about you, including:</p>
+                    <ul>
+                        <li>Your name and profile picture</li>
+                        <li>A short bio or description</li>
+                        <li>Links to your social media accounts</li>
+                        <li>Custom styling to match your personal brand</li>
+                    </ul>
+                </section>
+                
+                <section id="creating-bio" class="docs-section">
+                    <h2>Creating Your Bio</h2>
+                    <p>To create a new bio page:</p>
+                    <ol>
+                        <li>Click the <strong>Create Your Bio</strong> button on the homepage or navigate to <code>/create</code></li>
+                        <li>Fill out the form with your details:
+                            <ul>
+                                <li><strong>Bio URL</strong>: This will be your custom URL (alphanumeric characters only)</li>
+                                <li><strong>Your Name</strong>: Your full name or the name you want to display</li>
+                                <li><strong>Tagline</strong>: A short phrase describing what you do</li>
+                                <li><strong>Bio</strong>: A longer description about yourself</li>
+                                <li><strong>Profile Image</strong>: Upload a profile picture</li>
+                                <li><strong>Theme</strong>: Choose one of our pre-made themes</li>
+                            </ul>
+                        </li>
+                        <li>Add your social media links if desired</li>
+                        <li>Click <strong>Create Bio</strong> to save your page</li>
+                    </ol>
+                </section>
+                
+                <section id="editing-bio" class="docs-section">
+                    <h2>Editing Your Bio</h2>
+                    <p>You can edit your bio page at any time:</p>
+                    <ol>
+                        <li>Navigate to your bio page at <code>http://your-url/your-bio-name</code></li>
+                        <li>Click the <strong>Edit</strong> link at the bottom of the page</li>
+                        <li>Make your changes in the form</li>
+                        <li>Click <strong>Update Bio</strong> to save your changes</li>
+                    </ol>
+                </section>
+                
+                <section id="customizing-themes" class="docs-section">
+                    <h2>Customizing Themes</h2>
+                    <p>Bio Creator offers several built-in themes to match your style:</p>
+                    <ul>
+                        <li><strong>Default</strong>: A clean, professional look</li>
+                        <li><strong>Dark</strong>: A sleek dark mode theme</li>
+                        <li><strong>Light</strong>: A bright, minimal look</li>
+                        <li><strong>Colorful</strong>: A vibrant, attention-grabbing theme</li>
+                        <li><strong>Minimal</strong>: A stripped-down, typography-focused design</li>
+                    </ul>
+                    <p>To change your theme, edit your bio page and select a different theme from the dropdown menu.</p>
+                </section>
+                
+                <section id="custom-css" class="docs-section">
+                    <h2>Using Custom CSS</h2>
+                    <p>For advanced users, you can add custom CSS to completely personalize your bio page's appearance:</p>
+                    <ol>
+                        <li>Edit your bio page</li>
+                        <li>Scroll down to the <strong>Custom CSS</strong> section</li>
+                        <li>Add your CSS code in the text area</li>
+                    </ol>
+                    <p>Example custom CSS:</p>
+                    <pre>.bio-card {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+}
+
+.name {
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}</pre>
+                </section>
+                
+                <section id="sharing" class="docs-section">
+                    <h2>Sharing Your Bio</h2>
+                    <p>Once your bio is created, you can share it using your custom URL:</p>
+                    <code>http://your-url/your-bio-name</code>
+                    <p>Consider adding this link to your:</p>
+                    <ul>
+                        <li>Social media profiles</li>
+                        <li>Email signature</li>
+                        <li>Business card</li>
+                        <li>Resume or CV</li>
+                    </ul>
+                </section>
+                
+                <section id="api-usage" class="docs-section">
+                    <h2>Using the API</h2>
+                    <p>Bio Creator offers a comprehensive API for developers who want to programmatically create and manage bio pages. Visit our <a href="/api/docs">API Documentation</a> for complete details.</p>
+                    
+                    <h3>Common API Use Cases:</h3>
+                    <ul>
+                        <li>Creating bio pages for users of your application</li>
+                        <li>Integrating bio creation into your product workflow</li>
+                        <li>Building tools that leverage the Bio Creator platform</li>
+                    </ul>
+                </section>
+                
+                <section id="faq" class="docs-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <h3>Is Bio Creator free to use?</h3>
+                    <p>Yes, Bio Creator is completely free to use for creating and sharing your personal bio page.</p>
+                    
+                    <h3>Can I have multiple bio pages?</h3>
+                    <p>Yes, you can create as many unique bio pages as you want, each with its own URL.</p>
+                    
+                    <h3>Can I delete my bio page?</h3>
+                    <p>Yes, you can delete your bio page using the API with a DELETE request to <code>/api/bio/your-bio-name</code>.</p>
+                    
+                    <h3>Do bio pages support media embeds?</h3>
+                    <p>Currently, bio pages support profile images and links. Media embeds may be added in future updates.</p>
+                    
+                    <h3>Can I use my own domain name?</h3>
+                    <p>Custom domain support is not available at this time, but may be added in the future.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bio Creator</h3>
+                <p>Create beautiful bio pages in minutes.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/create">Create Bio</a></li>
+                    <li><a href="/api/docs">API Documentation</a></li>
+                    <li><a href="/docs">User Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>support@biocreator.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Bio Creator. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

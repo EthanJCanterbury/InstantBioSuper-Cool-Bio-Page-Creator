@@ -1,0 +1,339 @@
+
+/* Bio Page Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.bio-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.bio-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+}
+
+.profile-image {
+    margin-bottom: 30px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid;
+}
+
+.bio-header {
+    margin-bottom: 25px;
+}
+
+.name {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.bio-content {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    white-space: pre-line;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+}
+
+.bio-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.edit-link, .home-link {
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Default Theme */
+.theme-default {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.theme-default .bio-card {
+    background-color: #fff;
+}
+
+.theme-default .profile-image img {
+    border-color: #4361ee;
+}
+
+.theme-default .name {
+    color: #3a0ca3;
+}
+
+.theme-default .tagline {
+    color: #666;
+}
+
+.theme-default .social-link {
+    background-color: #f1f3f4;
+    color: #4361ee;
+}
+
+.theme-default .social-link:hover {
+    background-color: #4361ee;
+    color: white;
+}
+
+.theme-default .edit-link, .theme-default .home-link {
+    background-color: #f1f3f4;
+    color: #4361ee;
+}
+
+.theme-default .edit-link:hover, .theme-default .home-link:hover {
+    background-color: #4361ee;
+    color: white;
+    text-decoration: none;
+}
+
+/* Dark Theme */
+.theme-dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.theme-dark .bio-card {
+    background-color: #1e1e1e;
+}
+
+.theme-dark .profile-image img {
+    border-color: #bb86fc;
+}
+
+.theme-dark .name {
+    color: #bb86fc;
+}
+
+.theme-dark .tagline {
+    color: #b0b0b0;
+}
+
+.theme-dark .social-link {
+    background-color: #333;
+    color: #bb86fc;
+}
+
+.theme-dark .social-link:hover {
+    background-color: #bb86fc;
+    color: #121212;
+}
+
+.theme-dark .edit-link, .theme-dark .home-link {
+    background-color: #333;
+    color: #bb86fc;
+}
+
+.theme-dark .edit-link:hover, .theme-dark .home-link:hover {
+    background-color: #bb86fc;
+    color: #121212;
+    text-decoration: none;
+}
+
+/* Light Theme */
+.theme-light {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.theme-light .bio-card {
+    background-color: #f8f9fa;
+}
+
+.theme-light .profile-image img {
+    border-color: #00b4d8;
+}
+
+.theme-light .name {
+    color: #0077b6;
+}
+
+.theme-light .tagline {
+    color: #666;
+}
+
+.theme-light .social-link {
+    background-color: #e9ecef;
+    color: #0077b6;
+}
+
+.theme-light .social-link:hover {
+    background-color: #00b4d8;
+    color: white;
+}
+
+.theme-light .edit-link, .theme-light .home-link {
+    background-color: #e9ecef;
+    color: #0077b6;
+}
+
+.theme-light .edit-link:hover, .theme-light .home-link:hover {
+    background-color: #00b4d8;
+    color: white;
+    text-decoration: none;
+}
+
+/* Colorful Theme */
+.theme-colorful {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    color: #333;
+}
+
+.theme-colorful .bio-card {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.theme-colorful .profile-image img {
+    border-color: #ff758f;
+}
+
+.theme-colorful .name {
+    color: #d23669;
+}
+
+.theme-colorful .tagline {
+    color: #666;
+}
+
+.theme-colorful .social-link {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    color: white;
+}
+
+.theme-colorful .social-link:hover {
+    background: linear-gradient(135deg, #ff758f 0%, #ff7eb3 100%);
+}
+
+.theme-colorful .edit-link, .theme-colorful .home-link {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    color: white;
+}
+
+.theme-colorful .edit-link:hover, .theme-colorful .home-link:hover {
+    background: linear-gradient(135deg, #ff758f 0%, #ff7eb3 100%);
+    text-decoration: none;
+}
+
+/* Minimal Theme */
+.theme-minimal {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.theme-minimal .bio-card {
+    background-color: #ffffff;
+    box-shadow: none;
+    border: 1px solid #eaeaea;
+}
+
+.theme-minimal .profile-image img {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-minimal .name {
+    color: #333;
+    font-weight: 300;
+}
+
+.theme-minimal .tagline {
+    color: #666;
+    font-weight: 300;
+}
+
+.theme-minimal .social-link {
+    background-color: transparent;
+    color: #333;
+}
+
+.theme-minimal .social-link:hover {
+    color: #000;
+    transform: scale(1.1);
+}
+
+.theme-minimal .edit-link, .theme-minimal .home-link {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #eaeaea;
+}
+
+.theme-minimal .edit-link:hover, .theme-minimal .home-link:hover {
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .bio-card {
+        padding: 30px 20px;
+    }
+    
+    .profile-image img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .name {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .bio-content {
+        font-size: 1rem;
+    }
+}

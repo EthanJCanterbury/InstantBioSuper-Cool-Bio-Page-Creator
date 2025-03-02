@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Bio | Bio Creator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Create Your Bio</h1>
+            <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+        </header>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <main>
+            <form method="POST" enctype="multipart/form-data" class="bio-form">
+                <div class="form-group">
+                    <label for="bio_name">Bio URL (alphanumeric only) *</label>
+                    <input type="text" id="bio_name" name="bio_name" required placeholder="yourusername">
+                    <small>Your bio will be available at: http://yoursite.com/yourusername</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tagline">Tagline</label>
+                    <input type="text" id="tagline" name="tagline" placeholder="Web Developer | Designer | Creator">
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">Bio *</label>
+                    <textarea id="bio" name="bio" rows="5" required></textarea>
+                    <small>Tell the world about yourself</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="profile_image">Profile Image</label>
+                    <input type="file" id="profile_image" name="profile_image" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="theme">Theme</label>
+                    <select id="theme" name="theme">
+                        <option value="default">Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                        <option value="colorful">Colorful</option>
+                        <option value="minimal">Minimal</option>
+                    </select>
+                </div>
+                
+                <div class="social-links">
+                    <h3>Social Links</h3>
+                    
+                    <div class="form-group">
+                        <label for="twitter">Twitter</label>
+                        <input type="url" id="twitter" name="twitter" placeholder="https://twitter.com/yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourusername">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" name="github" placeholder="https://github.com/yourusername">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="custom_css">Custom CSS (Advanced)</label>
+                    <textarea id="custom_css" name="custom_css" rows="5"></textarea>
+                    <small>Add your own custom CSS styles</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="button primary">Create Bio</button>
+                </div>
+            </form>
+        </main>
+        
+        <footer>
+            <p>&copy; 2023 Bio Creator. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Page Creator API Documentation</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .api-docs {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .endpoint {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border-left: 5px solid #007bff;
+        }
+        .method {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background-color: #28a745; color: white; }
+        .post { background-color: #007bff; color: white; }
+        .put { background-color: #fd7e14; color: white; }
+        .delete { background-color: #dc3545; color: white; }
+        
+        .url {
+            font-family: monospace;
+            font-size: 16px;
+            background-color: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        .response-container {
+            margin-top: 10px;
+        }
+        
+        .tab-container {
+            margin-top: 15px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #e9ecef;
+            margin-right: 5px;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .tab.active {
+            background-color: #212529;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">Bio Page Creator</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/create">Create Bio</a></li>
+                    <li><a href="/api/docs" class="active">API Docs</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="api-docs">
+        <h1>API Documentation</h1>
+        <p>Bio Page Creator provides a RESTful API that allows you to programmatically create, read, update, and delete bio pages.</p>
+        
+        <h2>Base URL</h2>
+        <p>All API URLs referenced in this documentation are relative to your deployment URL.</p>
+        
+        <h2>Authentication</h2>
+        <p>Currently, the API does not require authentication. This may change in future updates.</p>
+        
+        <h2>Response Format</h2>
+        <p>All responses are returned in JSON format. Each response includes a <code>success</code> boolean that indicates whether the request was successful.</p>
+        
+        <h2>Endpoints</h2>
+        
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="url">/api/bios</span></h3>
+            <p>Returns a list of all available bios.</p>
+            
+            <div class="response-container">
+                <h4>Response</h4>
+                <pre>{
+  "success": true,
+  "count": 2,
+  "bios": ["john_doe", "jane_smith"]
+}</pre>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="url">/api/bio/{bio_name}</span></h3>
+            <p>Returns details for a specific bio.</p>
+            
+            <div class="response-container">
+                <h4>Response</h4>
+                <pre>{
+  "success": true,
+  "bio_name": "john_doe",
+  "bio": {
+    "name": "John Doe",
+    "tagline": "Web Developer",
+    "bio": "Hi, I'm John. I love creating web applications and solving problems.",
+    "profile_image": "/uploads/1234abcd.jpg",
+    "theme": "dark",
+    "social_links": {
+      "twitter": "johndoe",
+      "instagram": "johndoe",
+      "linkedin": "johndoe",
+      "github": "johndoe"
+    },
+    "custom_css": ""
+  }
+}</pre>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3><span class="method post">POST</span> <span class="url">/api/bio/{bio_name}</span></h3>
+            <p>Creates a new bio with the specified name.</p>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab(this, 'request-post')">Request</div>
+                    <div class="tab" onclick="switchTab(this, 'response-post')">Response</div>
+                </div>
+                
+                <div id="request-post" class="tab-content active">
+                    <h4>Request Body</h4>
+                    <pre>{
+  "name": "John Doe",
+  "tagline": "Web Developer",
+  "bio": "Hi, I'm John. I love creating web applications and solving problems.",
+  "profile_image": "/uploads/1234abcd.jpg",
+  "theme": "dark",
+  "social_links": {
+    "twitter": "johndoe",
+    "instagram": "johndoe",
+    "linkedin": "johndoe",
+    "github": "johndoe"
+  },
+  "custom_css": ""
+}</pre>
+                </div>
+                
+                <div id="response-post" class="tab-content">
+                    <h4>Response</h4>
+                    <pre>{
+  "success": true,
+  "message": "Bio created successfully",
+  "bio_name": "john_doe"
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3><span class="method put">PUT</span> <span class="url">/api/bio/{bio_name}</span></h3>
+            <p>Updates an existing bio with the specified name.</p>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab(this, 'request-put')">Request</div>
+                    <div class="tab" onclick="switchTab(this, 'response-put')">Response</div>
+                </div>
+                
+                <div id="request-put" class="tab-content active">
+                    <h4>Request Body</h4>
+                    <pre>{
+  "tagline": "Full Stack Developer",
+  "bio": "Updated bio information here"
+}</pre>
+                </div>
+                
+                <div id="response-put" class="tab-content">
+                    <h4>Response</h4>
+                    <pre>{
+  "success": true,
+  "message": "Bio updated successfully",
+  "bio_name": "john_doe"
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3><span class="method delete">DELETE</span> <span class="url">/api/bio/{bio_name}</span></h3>
+            <p>Deletes a bio with the specified name.</p>
+            
+            <div class="response-container">
+                <h4>Response</h4>
+                <pre>{
+  "success": true,
+  "message": "Bio deleted successfully",
+  "bio_name": "john_doe"
+}</pre>
+            </div>
+        </div>
+        
+        <div class="endpoint">
+            <h3><span class="method get">GET</span> <span class="url">/api/themes</span></h3>
+            <p>Returns a list of available themes for bios.</p>
+            
+            <div class="response-container">
+                <h4>Response</h4>
+                <pre>{
+  "success": true,
+  "count": 5,
+  "themes": ["default", "dark", "light", "colorful", "minimal"]
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab, contentId) {
+            const tabs = tab.parentElement.getElementsByClassName('tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            tab.classList.add('active');
+            
+            const tabContents = tab.parentElement.parentElement.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            document.getElementById(contentId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
